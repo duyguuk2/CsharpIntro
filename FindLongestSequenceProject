@@ -1,0 +1,41 @@
+using System;
+
+namespace LongestSequence
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int count = 0, longest = 0, row = 0, column = 0;
+            char[,] answers =
+            {
+                {'a', 'c', 'a', 'c', 'e'},
+                {'a', 'a', 'b', 'c', 'e'},
+                {'b', 'a', 'c', 'd', 'e'},
+                {'b', 'd', 'd', 'd', 'e'},
+                {'c', 'c', 'e', 'c', 'c'}
+            };
+            
+            for(int i = 0; i < answers.GetLength(0); i++)
+            {
+                count = 1;
+                for(int j = 0; j < answers.GetLength(1)-1; j++)
+                {
+                    if(answers[j ,i] ==answers[j + 1, i])
+                    {
+
+                        if (count > longest)
+                        {
+                            longest = count;
+                            row = j;
+                            column = i;
+                        }
+                        count++;
+                    }
+                }
+            }
+            Console.WriteLine("The longest sequence observed : {0} with {1} times.", answers[row, column], count);
+            Console.ReadKey();
+        }
+    }
+}
