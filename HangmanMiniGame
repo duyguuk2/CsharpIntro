@@ -1,0 +1,41 @@
+using System;
+
+namespace Hangman
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string empty = "";
+            string[] words = {"experience", "encapsulation", "authenticaton", "human", "person", "terrified", "bowl", "christmas", "squad"};
+
+            Random rnd = new Random();
+            int a= rnd.Next(0, words.Length);
+
+            string vocable = words[a];
+            for(int i = 0; i < vocable.Length; i += i)
+            {
+                empty += "_";
+            }
+            int count = empty.Length;
+            Console.WriteLine(empty);
+            Console.WriteLine("Please enter your guess: ");
+            do
+            {
+                char guess = char.Parse(Console.ReadLine());
+                int index = vocable.IndexOf(guess);
+
+                if (index != -1)
+                {
+                    vocable.Remove(empty[index], guess);
+                    Console.WriteLine(empty);
+                    count--;
+                }
+
+            } while (count != 0);
+
+            Console.ReadKey();
+        }
+       
+    }
+}
