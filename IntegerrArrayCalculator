@@ -1,0 +1,47 @@
+using System;
+
+namespace IntegerArrayCalculator
+{
+    class Program
+    {
+        static void Menu(int[] array)
+        {
+            int number;
+            Console.Write("Enter 1 to perform Summation\nEnter 2 to perform Multiplication\nEnter 3 to see the Mean Value Of The Array: ");
+            number = int.Parse(Console.ReadLine());
+
+            int sum = 0, multi = 1;
+            double avg = 0;
+            for(int i = 0; i < array.Length; i++)
+            {
+                sum += array[i];
+                multi *= array[i];
+            }
+            avg = (double)sum / array.Length;
+
+            //firstway
+            Console.WriteLine(number == 1 ? ("The sum of the elements in array: "+ sum) : number == 2 ? ("The multiplication of the elements in array: "+ multi) : number == 3 ? ("The Mean Value of the elements in array: "+ avg) : " ");
+
+            //secondway
+            //if(number == 1)
+            //{
+            //    Console.WriteLine("The sum of the elements in array: {0}", sum);
+            //}
+            //if(number == 2)
+            //{
+            //    Console.WriteLine("The multiplication of the elements in array: {0}", multi);
+            //}
+            //if(number == 3)
+            //{
+            //    Console.WriteLine("The Mean Value of the elements in array: {0}", avg);
+            //}
+
+        }
+        static void Main(string[] args)
+        {
+            int[] arr = { 1, 2, 3, 4 };
+            Menu(arr);
+            Console.ReadKey();
+        }
+    }
+}
