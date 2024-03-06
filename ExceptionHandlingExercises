@@ -1,0 +1,112 @@
+            //EXERCISE1
+            try
+            {
+                Console.Write("Please enter the first number: ");
+                int number1 = Convert.ToInt32(Console.ReadLine());
+
+                Console.Write("\nPlease enter the second number: ");
+                int number2 = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("divided by number2 : {0} ", number1 / number2);
+            }
+
+            //catch (DivideByZeroException)
+            //{
+            //    Console.WriteLine("Please enter a valid number !!!");
+            //}
+            //catch (FormatException)
+            //{
+            //    Console.WriteLine("Please enter a valid format !!!");
+            //}
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.StackTrace);
+                Console.WriteLine(e.Source);
+                Console.WriteLine(e.HelpLink);
+
+            }
+            finally
+            {
+                Console.WriteLine("This sentence reads either has a problem. ");
+            }
+            //EXERCISE2
+            try
+            {
+                int number;
+                Console.Write("Please enter a number to root: ");
+                number = Convert.ToInt32(Console.ReadLine());
+
+                double root = (double)Math.Sqrt(number);
+                Console.WriteLine("The result is = {0}", root);
+
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid Number !");
+            }
+
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Invalıd Number !");
+            }
+            finally
+            {
+                Console.WriteLine("Good bye !");
+            }
+            //EXERCISE3
+
+            try
+            {
+                Console.WriteLine("Enter the start number: ");
+                int start = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine("Enter the end number: ");
+                int end = Convert.ToInt32(Console.ReadLine());
+
+                if (start > 100 || start < 0 || end < 0 || end > 100)
+                {
+                    throw new ApplicationException("Your number is not in the interval !");
+                }
+                else
+                {
+                    Console.WriteLine(ReadNumber(start, end));
+                }
+
+            }
+            catch (FormatException c)
+            {
+                Console.WriteLine(c.Message);
+            }
+
+            catch (ApplicationException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            //////////////////////////
+            //EXERCISE4
+            try
+            {
+                Console.WriteLine("Enter start and end values: ");
+                int start = int.Parse(Console.ReadLine());
+                int end = int.Parse(Console.ReadLine());
+                int counter = 0;
+                Console.WriteLine("Enter 10 valid numbers:");
+                for (int i = 0; i <= 10; i++)
+                {
+                    while (counter != 10)
+                    {
+                        int num = Convert.ToInt32(Console.ReadLine());
+                        if (!CheckRange(num, start, end))
+                        {
+                            throw new ApplicationException("The number is not in the range.");
+                        }
+                        counter++;
+                    }
+                }
+            }
+            catch (ApplicationException a)
+            {
+                Console.WriteLine(a.Message);
+            }
