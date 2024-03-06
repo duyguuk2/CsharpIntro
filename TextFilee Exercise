@@ -1,0 +1,42 @@
+namespace hafta11.exercise4
+{
+    class Program
+    {
+     
+        static bool CreateFile(string filename)
+        {
+            bool flag = false;
+            string newFile = "../../" + filename;
+            if (File.Exists(newFile) == false)
+            {
+                File.Create(newFile).Close();
+                flag = true;
+            }
+            return flag;
+
+        }
+        static void WriteToFile(string filename, string[] lines)
+        {
+            if (CreateFile(filename))
+            {
+                string newFile = "../../" + filename;
+                StreamWriter sw = new StreamWriter(newFile);
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    if (lines[i] != " ")
+                    {
+                        sw.WriteLine(lines[i]);
+                    }
+                }
+                sw.Close();
+            }
+        }
+        static void Main(string[] args)
+        {
+            string[] answers = { "Duygu#A#B#C#D#A", "Ramazan#A#C#E#B#C", "Burcu#A#B#A", "Aynur#B#A#A#A#E", "Hamdi#D#E#B#B#A" };
+            string[] opinions = { "A", "B", "C", "D", "A" };
+            WriteToFile("answers.txt", answers);
+            WriteToFile("opinions.txt", opinions);
+        }
+    }
+}
