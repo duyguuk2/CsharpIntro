@@ -1,0 +1,34 @@
+using System;
+using System.IO;
+
+namespace hafta11.exercise6
+{
+    class Program
+    {
+        static bool FileNameIsValid(string filename)
+        {
+            string newfname = "../../" + filename;
+            string extention = Path.GetExtension(filename); //for example, .txt
+            char[] chars = Path.GetInvalidFileNameChars();
+
+            bool valid = true;
+            foreach(char c in chars)
+            {
+                if (filename.Contains(c))
+                {
+                    valid = false;
+                }
+            }
+            if(valid == true && extention == ".txt")
+                return true;
+            else
+                return false;
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Please enter a filename to check if it is valid: ");
+            string filename = Console.ReadLine();
+            Console.WriteLine(FileNameIsValid(filename) ? "The filename is valid." : "The filename is not valid.");
+        }
+    }
+}
