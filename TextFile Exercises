@@ -1,0 +1,37 @@
+namespace hafta11.exercise3
+{
+    class Program
+    {
+        
+
+        static string ReadAllFile(string filename)
+        {
+            string newfilename = "../../" + filename;
+            string content = null;
+
+            if (File.Exists(newfilename))
+            {
+                content = File.ReadAllText(newfilename);
+            }                                                    //else
+                                                                 //{ content = "The file does not exists."}
+            return content;
+        }
+        static void Main(string[] args)
+        {
+            WriteFile("duygu");
+            Console.WriteLine(ReadAllFile("sen101.txt") == null ? "The file does not exists." : ReadAllFile("sen101.txt"));//Console.WriteLine(ReadAllFile("sen101.txt"));
+            Console.ReadKey();
+
+        }
+
+        static void WriteFile(string fileName)
+        {
+            StreamWriter writer = new StreamWriter(fileName);
+
+            using (writer)
+            {
+                writer.WriteLine("duygu");
+            }
+        }
+    }
+}
