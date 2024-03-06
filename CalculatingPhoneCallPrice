@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PhoneCallMethod
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+           double[] rates = { 0.03, 0.12 };
+            double[] minutes = { 2, 5 };
+            Console.WriteLine("{0,10}  {1,10}  {2,10}", "Minutes", "Rate", "Price");
+            for (int i = 0; i < minutes.Length; i++)
+            {
+                for (int j = 0; j < rates.Length; j++)
+                {
+                    Console.WriteLine("{0, 10}  {1, 10}  ${2, 10}", minutes[i], rates[j], CalcPhoneCallPrice(minutes[i], rates[j]).ToString() );
+                }
+            }
+            Console.ReadKey();
+        }
+        static double CalcPhoneCallPrice(double minutes, double rates)
+        {
+            const double BASE_FEE = 0.25;
+            double priceOfCall = BASE_FEE + minutes * rates;
+            return priceOfCall;
+        }
+
+    }
+}
